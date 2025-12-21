@@ -2,9 +2,7 @@ enum SpinnerCategory {
   dots('dots', 'Dots'),
   bars('bars', 'Bars'),
   square('square', 'Square'),
-  lines('lines', 'Lines'),
-  widgets('widgets', 'Widgets'),
-  state('state', 'State');
+  lines('lines', 'Lines');
 
   final String value;
   final String label;
