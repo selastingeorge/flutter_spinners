@@ -12,6 +12,8 @@ and the Flutter guide for
 -->
 
 # Flutter Spinners
+[![pub package](https://img.shields.io/pub/v/flutter_spinners.svg)](https://pub.dev/packages/flutter_spinners)
+
 A collection of beautiful, customizable loading spinners for flutter applications, leveraging [CustomPainter](https://api.flutter.dev/flutter/rendering/CustomPainter-class.html).
 
 
@@ -102,6 +104,9 @@ SteppedDotsLoader(
 - SlidingSquareLineIndicator
 - SquareLineIndicator
 - SquareLineLoopIndicator
+
+## 📸 Demo
+![Flutter Spinners Demo](docs/assets/screenshot.gif)
 
 ## 🤝 Contributing
 Contributions are very welcome! 🎉  
