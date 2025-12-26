@@ -50,3 +50,9 @@ Minor Refactoring of codebase
 
 - Formatted source code to pass static analysis.
 - Added screenshots
+
+## v0.0.3
+
+Updated README
+
+- Fixed missing screenshot fom readme
