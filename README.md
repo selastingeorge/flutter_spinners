@@ -106,7 +106,7 @@ SteppedDotsLoader(
 - SquareLineLoopIndicator
 
 ## 📸 Demo
-<img src="docs/assets/screenshot.gif" alt="Flutter Spinners demo preview" width="360"/>
+<img src="doc/assets/screenshot.gif" alt="Flutter Spinners demo preview" width="360"/>
 
 ## 🤝 Contributing
 Contributions are very welcome! 🎉  
