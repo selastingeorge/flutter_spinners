@@ -48,5 +48,5 @@ Initial release of **flutter_spinners**.
 
 Minor Refactoring of codebase
 
-- Formatted source code top pass static analysis.
+- Formatted source code to pass static analysis.
 - Added screenshots
