@@ -58,19 +58,57 @@ SteppedDotsLoader(
 
 ### Parameters
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-| `color` | Color | The color of the spinner (required) |
-| `duration` | Duration | Animation cycle duration (optional, varies by spinner) |
-| `size` | double | Size of the spinner in logical pixels (optional, where applicable) |
-| `borderRadius` | double | Corner radius of the bars (only available for bar-based spinners) |
+| Parameter      | Type     | Description                                                        |
+|----------------|----------|--------------------------------------------------------------------|
+| `color`        | Color    | The color of the spinner (required)                                |
+| `duration`     | Duration | Animation cycle duration (optional, varies by spinner)             |
+| `size`         | double   | Size of the spinner in logical pixels (optional, where applicable) |
+| `borderRadius` | double   | Corner radius of the bars (only available for bar-based spinners)  |
 
+## 🌀 Available Spinners
+### Dot Spinners
+- CornerDotsIndicator
+- FlippingDotsIndicator
+- GridDotsShimmerIndicator
+- PulseDotsIndicator
+- QuadDotSwapIndicator
+- ShadowDotsIndicator
+- SingleStepLoader
+- SteppedDotsLoader
+- SwappingDotsIndicator
+- WavyDotsIndicator
 
+### Bar Spinners
+- BarWaveIndicator
+- DancingBarsIndicator
+- DoubleRowBarsIndicator
+- FlippingBarsIndicator
+- GrowingBarWaveIndicator
+- HorizontalShutterBarsIndicator
+- ShrinkSwapBarsIndicator
+- SinkingBarsIndicator
+- StretchBarsIndicator
+- VerticalShutterBarsIndicator
+
+### Square
+- FlippingSquareIndicator
+- FlippingSquaresGridIndicator
+- FoldingSquareIndicator
+- PulsatingSquareIndicator
+- ShimmeringSquareGridIndicator
+- SquareWaveGridIndicator
+
+### Lines
+- SlidingSquareLineIndicator
+- SquareLineIndicator
+- SquareLineLoopIndicator
+
+## 🤝 Contributing
+Contributions are very welcome! 🎉  
+Whether it’s a new spinner, a bug fix, or a documentation improvement, every bit helps.
 
 ## ⭐ Show Your Support
 
 If you find this package useful, please consider giving it a star on GitHub and a like on pub.dev!
-
----
 
 Built with ❤️ for the Flutter community.

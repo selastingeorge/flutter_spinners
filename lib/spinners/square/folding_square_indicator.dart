@@ -76,7 +76,7 @@ class _FoldingSquareIndicatorState extends State<FoldingSquareIndicator>
       height: widget.size,
       child: AnimatedBuilder(
         animation: _controller,
-        builder: (_, __) {
+        builder: (_, _) {
           return CustomPaint(
             painter: _FoldingSquarePainter(
               progress: _controller.value,
