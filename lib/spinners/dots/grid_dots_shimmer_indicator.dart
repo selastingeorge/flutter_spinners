@@ -2,11 +2,42 @@ import 'dart:math' as math;
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
+/// An animated loading indicator with a 3x3 grid of dots that shimmer diagonally.
+///
+/// Nine dots arranged in a grid display a shimmer effect that travels diagonally
+/// from top-left to bottom-right. Dots brighten and fade based on their distance
+/// from the shimmer wave using a gaussian-like intensity curve.
+///
+/// Example:
+/// ```dart
+/// GridDotsShimmerIndicator(
+///   size: 80,
+///   color: Colors.purple,
+///   duration: Duration(milliseconds: 1500),
+/// )
+/// ```
 class GridDotsShimmerIndicator extends StatefulWidget {
+
+  /// The width and height of the indicator (creates a square).
+  ///
+  /// Defaults to 60.
   final double size;
+
+  /// The color of the animated dots.
+  ///
+  /// Defaults to [Colors.black].
   final Color color;
+
+  /// The duration of one complete shimmer cycle across the grid.
+  ///
+  /// Defaults to 1 second.
   final Duration duration;
 
+  /// Creates a grid dots shimmer loading indicator.
+  ///
+  /// [size] - The width and height of the indicator (default: 60)
+  /// [color] - The color of the dots (default: Colors.black)
+  /// [duration] - Animation cycle duration (default: 1 second)
   const GridDotsShimmerIndicator({
     super.key,
     this.size = 60,
@@ -25,6 +56,7 @@ class _GridDotsShimmerIndicatorState extends State<GridDotsShimmerIndicator>
   @override
   void initState() {
     super.initState();
+    // Initialize and start the repeating animation
     _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
   }
 
@@ -51,32 +83,57 @@ class _GridDotsShimmerIndicatorState extends State<GridDotsShimmerIndicator>
   }
 }
 
+/// Custom painter that draws a 3x3 grid of dots with diagonal shimmer effect.
+///
+/// [t] - Animation progress value from 0.0 to 1.0
+/// [color] - Base color of the dots (alpha is modulated for shimmer)
+/// [size] - The size of the indicator (square)
 class _GridDotsShimmerPainter extends CustomPainter {
+  /// Animation progress value from 0.0 to 1.0.
   final double t;
+
+  /// Base color of the dots.
   final Color color;
+
+  /// Size of the indicator.
   final double size;
 
   _GridDotsShimmerPainter({required this.t, required this.color, required this.size});
 
   @override
   void paint(Canvas canvas, Size s) {
+    // Grid takes up 70% of the indicator size
     final gridSize = size * 0.7;
-    final spacing = gridSize / 3;
-    final radius = spacing * 0.35;
+    final spacing = gridSize / 3; // Space between dot centers
+    final radius = spacing * 0.35; // Dot radius (35% of spacing)
 
+    // Center the grid within the indicator
     final offset = Offset((size - gridSize) / 2, (size - gridSize) / 2);
 
+    // Shimmer position travels diagonally from -1 to 5 (covers diagonal indices 0-4)
+    // This range ensures shimmer enters and exits the grid smoothly
     final shimmerPos = lerpDouble(-1, 5, t)!;
 
+    // Draw 3x3 grid of dots
     for (int row = 0; row < 3; row++) {
       for (int col = 0; col < 3; col++) {
+        // Diagonal index: dots along same diagonal have same sum (row + col)
+        // Diagonals: 0 (top-left), 1, 2, 3, 4 (bottom-right)
         final diagonalIndex = row + col;
+
+        // Calculate distance from shimmer wave position
         final dist = (diagonalIndex - shimmerPos).abs();
+
+        // Apply gaussian-like intensity curve (closer = brighter)
+        // exp(-dist² * 1.6) creates a sharp, focused shimmer wave
         double intensity = math.exp(-dist * dist * 1.6);
+
+        // Map intensity to alpha: dim (70) to bright (255)
         final alpha = (70 + intensity * 185).round().clamp(0, 255);
 
         final paint = Paint()..color = color.withAlpha(alpha);
 
+        // Calculate dot center position
         final dx = offset.dx + col * spacing + spacing / 2;
         final dy = offset.dy + row * spacing + spacing / 2;
 

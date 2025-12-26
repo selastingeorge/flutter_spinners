@@ -190,6 +190,7 @@ class _HomeState extends State<Home> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: CustomScrollView(
             slivers: [
+
               SliverToBoxAdapter(
                 child: Column(
                   children: [

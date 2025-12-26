@@ -11,29 +11,66 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/to/develop-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# Flutter Spinners
+A collection of beautiful, customizable loading spinners for flutter applications, leveraging [CustomPainter](https://api.flutter.dev/flutter/rendering/CustomPainter-class.html).
 
-## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## 📦 Installation
 
-## Getting started
+Add this to your package's pubspec.yaml file:
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  flutter_spinners: ^1.0.0
 ```
 
-## Additional information
+Then run:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```bash
+flutter pub get
+```
+
+## ✨ Import
+
+```dart
+import 'package:flutter_spinners/flutter_spinners.dart';
+```
+
+## 🧭 Usage
+
+```dart
+WavyDotsIndicator(
+  color: Colors.white,
+  size: 60,
+  duration: const Duration(seconds: 2)
+),
+```
+
+## 🎨 Customization
+All spinners support customization through common parameters:
+```dart
+SteppedDotsLoader(
+   color: Colors.purple,           // Change the color
+   size: 50.0,                     // Adjust the size (if supported)
+   duration: Duration(seconds: 2), // Control animation speed
+)
+```
+
+### Parameters
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+| `color` | Color | The color of the spinner (required) |
+| `duration` | Duration | Animation cycle duration (optional, varies by spinner) |
+| `size` | double | Size of the spinner in logical pixels (optional, where applicable) |
+| `borderRadius` | double | Corner radius of the bars (only available for bar-based spinners) |
+
+
+
+## ⭐ Show Your Support
+
+If you find this package useful, please consider giving it a star on GitHub and a like on pub.dev!
+
+---
+
+Built with ❤️ for the Flutter community.
