@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class PulsatingSquareIndicator extends StatefulWidget {
-
   /// The width and height of the indicator container (creates a square).
   ///
   /// Defaults to 60.
@@ -49,8 +48,7 @@ class PulsatingSquareIndicator extends StatefulWidget {
       _PulsatingSquareIndicatorState();
 }
 
-class _PulsatingSquareIndicatorState
-    extends State<PulsatingSquareIndicator>
+class _PulsatingSquareIndicatorState extends State<PulsatingSquareIndicator>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
@@ -58,8 +56,7 @@ class _PulsatingSquareIndicatorState
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller =
-    AnimationController(vsync: this, duration: widget.duration)
+    _controller = AnimationController(vsync: this, duration: widget.duration)
       ..repeat();
   }
 

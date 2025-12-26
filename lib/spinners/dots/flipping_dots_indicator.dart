@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class FlippingDotsIndicator extends StatefulWidget {
-
   /// The width of the indicator. Height is automatically set to 1/4 of this value.
   ///
   /// Defaults to 60.
@@ -56,10 +55,8 @@ class _FlippingDotsIndicatorState extends State<FlippingDotsIndicator>
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    )..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -99,10 +96,7 @@ class _FlippingDotsPainter extends CustomPainter {
   /// Color of the dots.
   final Color color;
 
-  _FlippingDotsPainter({
-    required this.t,
-    required this.color,
-  });
+  _FlippingDotsPainter({required this.t, required this.color});
 
   @override
   void paint(Canvas canvas, Size size) {

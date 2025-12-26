@@ -54,14 +54,16 @@ class BarWaveIndicator extends StatefulWidget {
   State<BarWaveIndicator> createState() => _BarWaveIndicatorState();
 }
 
-class _BarWaveIndicatorState extends State<BarWaveIndicator> with SingleTickerProviderStateMixin {
+class _BarWaveIndicatorState extends State<BarWaveIndicator>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -106,7 +108,11 @@ class _BarWavePainter extends CustomPainter {
   /// Border radius for bar corners.
   final double borderRadius;
 
-  _BarWavePainter({required this.t, required this.color, required this.borderRadius});
+  _BarWavePainter({
+    required this.t,
+    required this.color,
+    required this.borderRadius,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -120,7 +126,11 @@ class _BarWavePainter extends CustomPainter {
     // Calculate horizontal positions to center the bars
     final totalBarsWidth = barWidth * 3 + gap * 2;
     final startX = (size.width - totalBarsWidth) / 2;
-    final xPositions = [startX, startX + barWidth + gap, startX + (barWidth + gap) * 2];
+    final xPositions = [
+      startX,
+      startX + barWidth + gap,
+      startX + (barWidth + gap) * 2,
+    ];
 
     // Draw three bars with phase-offset animations
     for (int i = 0; i < 3; i++) {
@@ -143,5 +153,7 @@ class _BarWavePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _BarWavePainter oldDelegate) =>
-      oldDelegate.t != t || oldDelegate.color != color || oldDelegate.borderRadius != borderRadius;
+      oldDelegate.t != t ||
+      oldDelegate.color != color ||
+      oldDelegate.borderRadius != borderRadius;
 }

@@ -5,7 +5,12 @@ class Terminal extends StatelessWidget {
   final String title;
   final String command;
   final String tooltip;
-  const Terminal({super.key, required this.title, required this.command, required this.tooltip});
+  const Terminal({
+    super.key,
+    required this.title,
+    required this.command,
+    required this.tooltip,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -66,14 +71,23 @@ class Terminal extends StatelessWidget {
                   richMessage: WidgetSpan(
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 280),
-                      child: Text(tooltip, style: const TextStyle(fontFamily: "Inter", fontSize: 12)),
+                      child: Text(
+                        tooltip,
+                        style: const TextStyle(
+                          fontFamily: "Inter",
+                          fontSize: 12,
+                        ),
+                      ),
                     ),
                   ),
                   child: SvgPicture.asset(
                     "assets/images/info.svg",
                     width: 16,
                     height: 16,
-                    colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                    colorFilter: const ColorFilter.mode(
+                      Colors.white,
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
               ],
@@ -85,7 +99,10 @@ class Terminal extends StatelessWidget {
             child: SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                child: Text(command, style: TextStyle(fontSize: 13, height: 1.5)),
+                child: Text(
+                  command,
+                  style: TextStyle(fontSize: 13, height: 1.5),
+                ),
               ),
             ),
           ),

@@ -15,7 +15,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class CornerDotsIndicator extends StatefulWidget {
-
   /// The width and height of the indicator (creates a square).
   ///
   /// Defaults to 60.
@@ -55,10 +54,8 @@ class _CornerDotsIndicatorState extends State<CornerDotsIndicator>
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    )..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -114,10 +111,10 @@ class _CornerDotsPainter extends CustomPainter {
 
     // Define the four corner positions (clockwise: top-left, top-right, bottom-right, bottom-left)
     final positions = [
-      Offset(0, 0),           // Top-left
-      Offset(spacing, 0),     // Top-right
+      Offset(0, 0), // Top-left
+      Offset(spacing, 0), // Top-right
       Offset(spacing, spacing), // Bottom-right
-      Offset(0, spacing),     // Bottom-left
+      Offset(0, spacing), // Bottom-left
     ];
 
     final curve = Curves.easeInOut;

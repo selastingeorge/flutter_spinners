@@ -17,7 +17,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class SlidingSquareLineIndicator extends StatefulWidget {
-
   /// The width and height of the square indicator.
   ///
   /// Defaults to 35.
@@ -61,7 +60,8 @@ class SlidingSquareLineIndicator extends StatefulWidget {
   });
 
   @override
-  State<SlidingSquareLineIndicator> createState() => _SlidingSquareLineIndicatorState();
+  State<SlidingSquareLineIndicator> createState() =>
+      _SlidingSquareLineIndicatorState();
 }
 
 class _SlidingSquareLineIndicatorState extends State<SlidingSquareLineIndicator>
@@ -72,7 +72,8 @@ class _SlidingSquareLineIndicatorState extends State<SlidingSquareLineIndicator>
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -158,7 +159,8 @@ class _SlidingSquareLinePainter extends CustomPainter {
       if (p < 0) p += 1.0;
 
       // Determine which side and position within that side
-      double sideProgress = (p * totalSides) % 1.0; // Position within current side (0.0-1.0)
+      double sideProgress =
+          (p * totalSides) % 1.0; // Position within current side (0.0-1.0)
       int side = (p * totalSides).floor() % totalSides; // Which side (0-3)
 
       // Return point based on current side
@@ -184,7 +186,11 @@ class _SlidingSquareLinePainter extends CustomPainter {
         int currentSide = (t * totalSides).floor() % totalSides;
         double nextSideStart = (currentSide + 1) / totalSides.toDouble();
         double segmentEnd = nextSideStart > 1.0 ? 1.0 : nextSideStart;
-        canvas.drawLine(getPointAtProgress(t), getPointAtProgress(segmentEnd), paint);
+        canvas.drawLine(
+          getPointAtProgress(t),
+          getPointAtProgress(segmentEnd),
+          paint,
+        );
         t = segmentEnd;
         if (t >= 1.0) break;
       }
@@ -193,8 +199,14 @@ class _SlidingSquareLinePainter extends CustomPainter {
       for (double t = 0.0; t < headProgress;) {
         int currentSide = (t * totalSides).floor() % totalSides;
         double nextSideStart = (currentSide + 1) / totalSides.toDouble();
-        double segmentEnd = nextSideStart > headProgress ? headProgress : nextSideStart;
-        canvas.drawLine(getPointAtProgress(t), getPointAtProgress(segmentEnd), paint);
+        double segmentEnd = nextSideStart > headProgress
+            ? headProgress
+            : nextSideStart;
+        canvas.drawLine(
+          getPointAtProgress(t),
+          getPointAtProgress(segmentEnd),
+          paint,
+        );
         t = segmentEnd;
         if (t >= headProgress) break;
       }
@@ -206,25 +218,41 @@ class _SlidingSquareLinePainter extends CustomPainter {
 
       // If head and tail are on the same side, draw single segment
       if (headSide == tailSide) {
-        canvas.drawLine(getPointAtProgress(tailProgress), getPointAtProgress(headProgress), paint);
+        canvas.drawLine(
+          getPointAtProgress(tailProgress),
+          getPointAtProgress(headProgress),
+          paint,
+        );
       }
       // Otherwise, draw segments across multiple sides
       else {
         // Draw tail segment to end of its side
         double tailSideEnd = (tailSide + 1) / totalSides.toDouble();
-        canvas.drawLine(getPointAtProgress(tailProgress), getPointAtProgress(tailSideEnd), paint);
+        canvas.drawLine(
+          getPointAtProgress(tailProgress),
+          getPointAtProgress(tailSideEnd),
+          paint,
+        );
 
         // Draw complete intermediate sides
         for (int i = tailSide + 1; i < headSide; i++) {
           int side = i % totalSides;
           double sideStart = side / totalSides.toDouble();
           double sideEnd = (side + 1) / totalSides.toDouble();
-          canvas.drawLine(getPointAtProgress(sideStart), getPointAtProgress(sideEnd), paint);
+          canvas.drawLine(
+            getPointAtProgress(sideStart),
+            getPointAtProgress(sideEnd),
+            paint,
+          );
         }
 
         // Draw head segment from start of its side
         double headSideStart = headSide / totalSides.toDouble();
-        canvas.drawLine(getPointAtProgress(headSideStart), getPointAtProgress(headProgress), paint);
+        canvas.drawLine(
+          getPointAtProgress(headSideStart),
+          getPointAtProgress(headProgress),
+          paint,
+        );
       }
     }
   }

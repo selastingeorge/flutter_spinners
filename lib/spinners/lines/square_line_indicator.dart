@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class SquareLineIndicator extends StatefulWidget {
-
   /// The width and height of the square indicator.
   ///
   /// Defaults to 35.
@@ -63,10 +62,8 @@ class _SquareLineIndicatorState extends State<SquareLineIndicator>
   void initState() {
     super.initState();
     // Initialize animation with reverse: draws square, then erases it
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    )..repeat(reverse: true);
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat(reverse: true);
   }
 
   @override
@@ -164,7 +161,10 @@ class _SquareLinePainter extends CustomPainter {
     if (right > 0) {
       canvas.drawLine(
         Offset(w - half, half), // Start at top-right corner
-        Offset(w - half, half + (h - strokeWidth) * right), // End based on progress
+        Offset(
+          w - half,
+          half + (h - strokeWidth) * right,
+        ), // End based on progress
         paint,
       );
     }
@@ -173,7 +173,10 @@ class _SquareLinePainter extends CustomPainter {
     if (bottom > 0) {
       canvas.drawLine(
         Offset(w - half, h - half), // Start at bottom-right corner
-        Offset(w - half - (w - strokeWidth) * bottom, h - half), // End based on progress
+        Offset(
+          w - half - (w - strokeWidth) * bottom,
+          h - half,
+        ), // End based on progress
         paint,
       );
     }
@@ -182,7 +185,10 @@ class _SquareLinePainter extends CustomPainter {
     if (left > 0) {
       canvas.drawLine(
         Offset(half, h - half), // Start at bottom-left corner
-        Offset(half, h - half - (h - strokeWidth) * left), // End based on progress
+        Offset(
+          half,
+          h - half - (h - strokeWidth) * left,
+        ), // End based on progress
         paint,
       );
     }

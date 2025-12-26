@@ -54,14 +54,16 @@ class FlippingBarsIndicator extends StatefulWidget {
   State<FlippingBarsIndicator> createState() => _FlippingBarsIndicatorState();
 }
 
-class _FlippingBarsIndicatorState extends State<FlippingBarsIndicator> with SingleTickerProviderStateMixin {
+class _FlippingBarsIndicatorState extends State<FlippingBarsIndicator>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -106,7 +108,11 @@ class _FlippingBarsPainter extends CustomPainter {
   /// Border radius for bar corners.
   final double borderRadius;
 
-  _FlippingBarsPainter({required this.t, required this.color, required this.borderRadius});
+  _FlippingBarsPainter({
+    required this.t,
+    required this.color,
+    required this.borderRadius,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -160,7 +166,11 @@ class _FlippingBarsPainter extends CustomPainter {
 
       // Draw the bar centered at origin (after translation)
       final rect = RRect.fromRectAndRadius(
-        Rect.fromCenter(center: Offset.zero, width: barWidth, height: barHeight),
+        Rect.fromCenter(
+          center: Offset.zero,
+          width: barWidth,
+          height: barHeight,
+        ),
         Radius.circular(borderRadius),
       );
 
@@ -171,5 +181,7 @@ class _FlippingBarsPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _FlippingBarsPainter oldDelegate) =>
-      oldDelegate.t != t || oldDelegate.color != color || oldDelegate.borderRadius != borderRadius;
+      oldDelegate.t != t ||
+      oldDelegate.color != color ||
+      oldDelegate.borderRadius != borderRadius;
 }

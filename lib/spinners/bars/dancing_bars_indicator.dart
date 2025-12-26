@@ -15,7 +15,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class DancingBarsIndicator extends StatefulWidget {
-
   /// The width of the indicator. Height is automatically set to 80% of this value.
   ///
   /// Defaults to 60.
@@ -54,14 +53,16 @@ class DancingBarsIndicator extends StatefulWidget {
   State<DancingBarsIndicator> createState() => _DancingBarsIndicatorState();
 }
 
-class _DancingBarsIndicatorState extends State<DancingBarsIndicator> with SingleTickerProviderStateMixin {
+class _DancingBarsIndicatorState extends State<DancingBarsIndicator>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -106,7 +107,11 @@ class _DancingBarsPainter extends CustomPainter {
   /// Border radius for bar corners.
   final double borderRadius;
 
-  _DancingBarsPainter({required this.t, required this.color, required this.borderRadius});
+  _DancingBarsPainter({
+    required this.t,
+    required this.color,
+    required this.borderRadius,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -120,7 +125,11 @@ class _DancingBarsPainter extends CustomPainter {
     // Calculate horizontal positions to center the bars
     final totalBarsWidth = barWidth * 3 + gap * 2;
     final startX = (size.width - totalBarsWidth) / 2;
-    final xPositions = [startX, startX + barWidth + gap, startX + (barWidth + gap) * 2];
+    final xPositions = [
+      startX,
+      startX + barWidth + gap,
+      startX + (barWidth + gap) * 2,
+    ];
 
     // Keyframes define the height factor (0.0-1.0) for each bar at each frame
     // Each row is a keyframe, each column is a bar (left, middle, right)
@@ -144,7 +153,9 @@ class _DancingBarsPainter extends CustomPainter {
       double localT = (t - frame * frameTime) / frameTime;
 
       // Interpolate height between current and next keyframe
-      final heightFactor = keyframes[frame][i] + (keyframes[nextFrame][i] - keyframes[frame][i]) * localT;
+      final heightFactor =
+          keyframes[frame][i] +
+          (keyframes[nextFrame][i] - keyframes[frame][i]) * localT;
 
       // Calculate vertical position and height
       final dy = size.height - barHeightMax * heightFactor;
@@ -159,5 +170,7 @@ class _DancingBarsPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _DancingBarsPainter oldDelegate) =>
-      oldDelegate.t != t || oldDelegate.color != color || oldDelegate.borderRadius != borderRadius;
+      oldDelegate.t != t ||
+      oldDelegate.color != color ||
+      oldDelegate.borderRadius != borderRadius;
 }

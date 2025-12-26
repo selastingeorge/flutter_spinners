@@ -17,7 +17,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class StretchBarsIndicator extends StatefulWidget {
-
   /// The width and height of the indicator (creates a square).
   ///
   /// Defaults to 60.
@@ -64,7 +63,8 @@ class _StretchBarsIndicatorState extends State<StretchBarsIndicator>
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -202,12 +202,16 @@ class _StretchBarsPainter extends CustomPainter {
       }
 
       canvas.drawRRect(
-        RRect.fromRectAndRadius(Rect.fromLTWH(dx, dy, w, h), Radius.circular(borderRadius)),
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(dx, dy, w, h),
+          Radius.circular(borderRadius),
+        ),
         paint,
       );
     }
   }
 
   @override
-  bool shouldRepaint(covariant _StretchBarsPainter old) => old.t != t || old.color != color;
+  bool shouldRepaint(covariant _StretchBarsPainter old) =>
+      old.t != t || old.color != color;
 }

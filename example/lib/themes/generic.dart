@@ -20,8 +20,15 @@ ThemeData genericTheme = ThemeData(
     preferBelow: false,
     padding: EdgeInsets.all(10),
     verticalOffset: 15,
-    decoration: BoxDecoration(color: Colors.white.withAlpha(250), borderRadius: BorderRadius.circular(5)),
-    textStyle: TextStyle(fontSize: 12, fontFamily: "Inter", color: Color(0xFF060606)),
+    decoration: BoxDecoration(
+      color: Colors.white.withAlpha(250),
+      borderRadius: BorderRadius.circular(5),
+    ),
+    textStyle: TextStyle(
+      fontSize: 12,
+      fontFamily: "Inter",
+      color: Color(0xFF060606),
+    ),
   ),
 
   chipTheme: ChipThemeData(
@@ -31,8 +38,14 @@ ThemeData genericTheme = ThemeData(
     secondarySelectedColor: Colors.white,
     shadowColor: Colors.transparent,
     showCheckmark: false,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50), side: BorderSide.none),
-    labelStyle: const TextStyle(color: Colors.white, fontVariations: [FontVariation('wght', 500)]),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(50),
+      side: BorderSide.none,
+    ),
+    labelStyle: const TextStyle(
+      color: Colors.white,
+      fontVariations: [FontVariation('wght', 500)],
+    ),
     secondaryLabelStyle: const TextStyle(color: Colors.black),
     side: BorderSide.none,
     color: WidgetStateProperty.fromMap(<WidgetStatesConstraint, Color?>{

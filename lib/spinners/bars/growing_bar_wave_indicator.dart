@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class GrowingBarWaveIndicator extends StatefulWidget {
-
   /// The width of the indicator. Height is automatically set to 80% of this value.
   ///
   /// Defaults to 60.
@@ -52,7 +51,8 @@ class GrowingBarWaveIndicator extends StatefulWidget {
   });
 
   @override
-  State<GrowingBarWaveIndicator> createState() => _GrowingBarWaveIndicatorState();
+  State<GrowingBarWaveIndicator> createState() =>
+      _GrowingBarWaveIndicatorState();
 }
 
 class _GrowingBarWaveIndicatorState extends State<GrowingBarWaveIndicator>
@@ -63,7 +63,8 @@ class _GrowingBarWaveIndicatorState extends State<GrowingBarWaveIndicator>
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -131,7 +132,11 @@ class _GrowingBarWavePainter extends CustomPainter {
     // Calculate horizontal positions to center the bars
     final totalBarsWidth = barWidth * 3 + gap * 2;
     final startX = (size - totalBarsWidth) / 2;
-    final xPositions = [startX, startX + barWidth + gap, startX + 2 * (barWidth + gap)];
+    final xPositions = [
+      startX,
+      startX + barWidth + gap,
+      startX + 2 * (barWidth + gap),
+    ];
     final barHeightMax = size * 0.80;
 
     // Keyframes define the height factor (0.0-1.0) for each bar at each frame
@@ -157,7 +162,9 @@ class _GrowingBarWavePainter extends CustomPainter {
       final localT = (t - frame * frameTime) / frameTime;
 
       // Interpolate height factor between current and next keyframe
-      final factor = keyframes[frame][i] + (keyframes[next][i] - keyframes[frame][i]) * localT;
+      final factor =
+          keyframes[frame][i] +
+          (keyframes[next][i] - keyframes[frame][i]) * localT;
 
       final barHeight = barHeightMax * factor;
 
@@ -175,5 +182,7 @@ class _GrowingBarWavePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _GrowingBarWavePainter oldDelegate) =>
-      oldDelegate.t != t || oldDelegate.color != color || oldDelegate.borderRadius != borderRadius;
+      oldDelegate.t != t ||
+      oldDelegate.color != color ||
+      oldDelegate.borderRadius != borderRadius;
 }

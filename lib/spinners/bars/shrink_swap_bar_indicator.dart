@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class ShrinkSwapBarsIndicator extends StatefulWidget {
-
   /// The width of the indicator. Height is automatically set to 80% of this value.
   ///
   /// Defaults to 60.
@@ -52,7 +51,8 @@ class ShrinkSwapBarsIndicator extends StatefulWidget {
   });
 
   @override
-  State<ShrinkSwapBarsIndicator> createState() => _ShrinkSwapBarsIndicatorState();
+  State<ShrinkSwapBarsIndicator> createState() =>
+      _ShrinkSwapBarsIndicatorState();
 }
 
 class _ShrinkSwapBarsIndicatorState extends State<ShrinkSwapBarsIndicator>
@@ -63,7 +63,8 @@ class _ShrinkSwapBarsIndicatorState extends State<ShrinkSwapBarsIndicator>
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -135,7 +136,11 @@ class _ShrinkSwapBarsPainter extends CustomPainter {
     final startX = (size - totalWidth) / 2;
 
     // Base positions: left, middle, right
-    final baseX = [startX, startX + barWidth + gap, startX + 2 * (barWidth + gap)];
+    final baseX = [
+      startX,
+      startX + barWidth + gap,
+      startX + 2 * (barWidth + gap),
+    ];
 
     // Rotated positions: right becomes left, left becomes middle, middle becomes right
     final rotatedX = [baseX[2], baseX[0], baseX[1]];
@@ -168,7 +173,10 @@ class _ShrinkSwapBarsPainter extends CustomPainter {
     // Phase 3 (2/3 - 1): All bars grow back to full height
     else {
       final p = (t - 2 / 3) * 3; // Normalize to 0-1 within this phase
-      heights = List.generate(3, (_) => minHeight + (maxHeight - minHeight) * p);
+      heights = List.generate(
+        3,
+        (_) => minHeight + (maxHeight - minHeight) * p,
+      );
       xs = rotatedX;
     }
 
@@ -192,5 +200,7 @@ class _ShrinkSwapBarsPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _ShrinkSwapBarsPainter oldDelegate) =>
-      oldDelegate.t != t || oldDelegate.color != color || oldDelegate.borderRadius != borderRadius;
+      oldDelegate.t != t ||
+      oldDelegate.color != color ||
+      oldDelegate.borderRadius != borderRadius;
 }

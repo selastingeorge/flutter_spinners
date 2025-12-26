@@ -5,7 +5,12 @@ class HorizontalChips extends StatefulWidget {
   final ValueChanged<String?>? onChanged;
   final int? initialSelectedIndex;
 
-  const HorizontalChips({super.key, required this.chips, this.onChanged, this.initialSelectedIndex});
+  const HorizontalChips({
+    super.key,
+    required this.chips,
+    this.onChanged,
+    this.initialSelectedIndex,
+  });
 
   @override
   State<HorizontalChips> createState() => _HorizontalChipsState();
@@ -48,7 +53,9 @@ class _HorizontalChipsState extends State<HorizontalChips> {
     final fadeRight = scrollable && position.pixels < max;
 
     // Only call setState if values actually changed
-    if (scrollable != _isScrollable || fadeLeft != _fadeLeft || fadeRight != _fadeRight) {
+    if (scrollable != _isScrollable ||
+        fadeLeft != _fadeLeft ||
+        fadeRight != _fadeRight) {
       // Use post-frame callback to avoid calling setState during build
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) {

@@ -15,7 +15,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class VerticalShutterBarsIndicator extends StatefulWidget {
-
   /// The width and height of the indicator (creates a square).
   ///
   /// Defaults to 60.
@@ -57,8 +56,7 @@ class _VerticalShutterBarsIndicatorState
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller =
-    AnimationController(vsync: this, duration: widget.duration)
+    _controller = AnimationController(vsync: this, duration: widget.duration)
       ..repeat();
   }
 
@@ -176,7 +174,8 @@ class _VerticalShutterBarsPainter extends CustomPainter {
         if (time < start) break; // Row hasn't started dropping yet
 
         final k = _progress(time, start, rowDrop);
-        final targetRow = rows - 1 - i; // Reverse order: first to drop lands at bottom
+        final targetRow =
+            rows - 1 - i; // Reverse order: first to drop lands at bottom
 
         // Start above grid, drop down to target position
         final y = oy - rowHeight + gridH * k * ((targetRow + 1) / rows);
@@ -230,10 +229,7 @@ class _VerticalShutterBarsPainter extends CustomPainter {
   void _drawRow(Canvas canvas, Paint paint, double ox, double y) {
     for (int col = 0; col < cols; col++) {
       final x = ox + col * (cell + gap);
-      canvas.drawRect(
-        Rect.fromLTWH(x, y, cell, rowHeight),
-        paint,
-      );
+      canvas.drawRect(Rect.fromLTWH(x, y, cell, rowHeight), paint);
     }
   }
 

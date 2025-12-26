@@ -17,7 +17,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class GridDotsShimmerIndicator extends StatefulWidget {
-
   /// The width and height of the indicator (creates a square).
   ///
   /// Defaults to 60.
@@ -46,7 +45,8 @@ class GridDotsShimmerIndicator extends StatefulWidget {
   });
 
   @override
-  State<GridDotsShimmerIndicator> createState() => _GridDotsShimmerIndicatorState();
+  State<GridDotsShimmerIndicator> createState() =>
+      _GridDotsShimmerIndicatorState();
 }
 
 class _GridDotsShimmerIndicatorState extends State<GridDotsShimmerIndicator>
@@ -57,7 +57,8 @@ class _GridDotsShimmerIndicatorState extends State<GridDotsShimmerIndicator>
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -75,7 +76,11 @@ class _GridDotsShimmerIndicatorState extends State<GridDotsShimmerIndicator>
         animation: _controller,
         builder: (_, _) {
           return CustomPaint(
-            painter: _GridDotsShimmerPainter(t: _controller.value, color: widget.color, size: widget.size),
+            painter: _GridDotsShimmerPainter(
+              t: _controller.value,
+              color: widget.color,
+              size: widget.size,
+            ),
           );
         },
       ),
@@ -98,7 +103,11 @@ class _GridDotsShimmerPainter extends CustomPainter {
   /// Size of the indicator.
   final double size;
 
-  _GridDotsShimmerPainter({required this.t, required this.color, required this.size});
+  _GridDotsShimmerPainter({
+    required this.t,
+    required this.color,
+    required this.size,
+  });
 
   @override
   void paint(Canvas canvas, Size s) {

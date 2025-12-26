@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class FlippingSquareIndicator extends StatefulWidget {
-
   /// The width and height of the indicator area (creates a square container).
   ///
   /// Defaults to 60.
@@ -49,8 +48,7 @@ class FlippingSquareIndicator extends StatefulWidget {
       _FlippingSquareIndicatorState();
 }
 
-class _FlippingSquareIndicatorState
-    extends State<FlippingSquareIndicator>
+class _FlippingSquareIndicatorState extends State<FlippingSquareIndicator>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
@@ -58,8 +56,7 @@ class _FlippingSquareIndicatorState
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller =
-    AnimationController(vsync: this, duration: widget.duration)
+    _controller = AnimationController(vsync: this, duration: widget.duration)
       ..repeat();
   }
 

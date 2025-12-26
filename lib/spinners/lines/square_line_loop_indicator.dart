@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class SquareLineLoopIndicator extends StatefulWidget {
-
   /// The width and height of the square indicator.
   ///
   /// Defaults to 35.
@@ -56,8 +55,7 @@ class SquareLineLoopIndicator extends StatefulWidget {
       _SquareLineLoopIndicatorState();
 }
 
-class _SquareLineLoopIndicatorState
-    extends State<SquareLineLoopIndicator>
+class _SquareLineLoopIndicatorState extends State<SquareLineLoopIndicator>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
@@ -65,10 +63,8 @@ class _SquareLineLoopIndicatorState
   void initState() {
     super.initState();
     // Initialize repeating animation (no reverse, creates continuous loop)
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    )..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -139,7 +135,8 @@ class _SquareLineLoopPainter extends CustomPainter {
 
     // Determine current step (0-7) and progress within that step (0.0-1.0)
     int currentStep = (progress / stepDuration).floor() % steps;
-    double localProgress = (progress - currentStep * stepDuration) / stepDuration;
+    double localProgress =
+        (progress - currentStep * stepDuration) / stepDuration;
 
     // Start and end points for each side (0.0-1.0 along side length)
     double topStart = 0, topEnd = 0;

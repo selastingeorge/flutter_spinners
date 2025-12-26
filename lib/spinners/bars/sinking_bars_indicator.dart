@@ -15,7 +15,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class SinkingBarsIndicator extends StatefulWidget {
-
   /// The width and height of the indicator (creates a square).
   ///
   /// Defaults to 60.
@@ -47,14 +46,16 @@ class SinkingBarsIndicator extends StatefulWidget {
   State<SinkingBarsIndicator> createState() => _SinkingBarsIndicatorState();
 }
 
-class _SinkingBarsIndicatorState extends State<SinkingBarsIndicator> with SingleTickerProviderStateMixin {
+class _SinkingBarsIndicatorState extends State<SinkingBarsIndicator>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -72,7 +73,11 @@ class _SinkingBarsIndicatorState extends State<SinkingBarsIndicator> with Single
         animation: _controller,
         builder: (_, _) {
           return CustomPaint(
-            painter: _SinkingBarsPainter(t: _controller.value, color: widget.color, size: widget.size),
+            painter: _SinkingBarsPainter(
+              t: _controller.value,
+              color: widget.color,
+              size: widget.size,
+            ),
           );
         },
       ),
@@ -95,7 +100,11 @@ class _SinkingBarsPainter extends CustomPainter {
   /// Size of the indicator.
   final double size;
 
-  _SinkingBarsPainter({required this.t, required this.color, required this.size});
+  _SinkingBarsPainter({
+    required this.t,
+    required this.color,
+    required this.size,
+  });
 
   /// Width of each individual bar cell.
   static const double cell = 6.0;
@@ -129,7 +138,8 @@ class _SinkingBarsPainter extends CustomPainter {
   /// [t] - Current time
   /// [start] - Start time of the range
   /// [length] - Length of the time range
-  double _progress(double t, double start, double length) => _clamp01((t - start) / length);
+  double _progress(double t, double start, double length) =>
+      _clamp01((t - start) / length);
 
   @override
   void paint(Canvas canvas, Size _) {
@@ -192,5 +202,6 @@ class _SinkingBarsPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant _SinkingBarsPainter old) => old.t != t || old.color != color;
+  bool shouldRepaint(covariant _SinkingBarsPainter old) =>
+      old.t != t || old.color != color;
 }

@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class HorizontalShutterBarsIndicator extends StatefulWidget {
-
   /// The width and height of the indicator (creates a square).
   ///
   /// Defaults to 60.
@@ -47,7 +46,8 @@ class HorizontalShutterBarsIndicator extends StatefulWidget {
       _HorizontalShutterBarsIndicatorState();
 }
 
-class _HorizontalShutterBarsIndicatorState extends State<HorizontalShutterBarsIndicator>
+class _HorizontalShutterBarsIndicatorState
+    extends State<HorizontalShutterBarsIndicator>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
@@ -55,8 +55,7 @@ class _HorizontalShutterBarsIndicatorState extends State<HorizontalShutterBarsIn
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller =
-    AnimationController(vsync: this, duration: widget.duration)
+    _controller = AnimationController(vsync: this, duration: widget.duration)
       ..repeat();
   }
 
@@ -190,10 +189,7 @@ class _HorizontalShutterGridBarsPainter extends CustomPainter {
       for (int col = 0; col < cols; col++) {
         final x = ox + col * (cell + gap) + dx;
 
-        canvas.drawRect(
-          Rect.fromLTWH(x, y, cell, rowHeight),
-          paint,
-        );
+        canvas.drawRect(Rect.fromLTWH(x, y, cell, rowHeight), paint);
       }
     }
 

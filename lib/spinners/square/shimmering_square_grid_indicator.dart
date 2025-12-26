@@ -17,7 +17,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class ShimmeringSquareGridIndicator extends StatefulWidget {
-
   /// The width and height of the indicator (creates a square).
   ///
   /// Defaults to 60.
@@ -59,10 +58,8 @@ class _ShimmeringSquareGridIndicatorState
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    )..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -121,10 +118,7 @@ class _ShimmeringSquareGridPainter extends CustomPainter {
     final squareSize = spacing * 0.7; // Each square is 70% of spacing
 
     // Center the grid within the indicator
-    final offset = Offset(
-      (size - gridSize) / 2,
-      (size - gridSize) / 2,
-    );
+    final offset = Offset((size - gridSize) / 2, (size - gridSize) / 2);
 
     // Shimmer position travels diagonally from -1 to 5 (covers diagonal indices 0-4)
     // This range ensures shimmer enters and exits the grid smoothly
@@ -147,17 +141,13 @@ class _ShimmeringSquareGridPainter extends CustomPainter {
         // Map intensity to alpha: dim (70) to bright (255)
         final alpha = (70 + intensity * 185).round().clamp(0, 255);
 
-        final paint = Paint()
-          ..color = color.withAlpha(alpha);
+        final paint = Paint()..color = color.withAlpha(alpha);
 
         // Calculate square position (centered within its cell)
         final dx = offset.dx + col * spacing + (spacing - squareSize) / 2;
         final dy = offset.dy + row * spacing + (spacing - squareSize) / 2;
 
-        canvas.drawRect(
-          Rect.fromLTWH(dx, dy, squareSize, squareSize),
-          paint,
-        );
+        canvas.drawRect(Rect.fromLTWH(dx, dy, squareSize, squareSize), paint);
       }
     }
   }

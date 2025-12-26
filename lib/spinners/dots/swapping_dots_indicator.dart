@@ -17,7 +17,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class SwappingDotsIndicator extends StatefulWidget {
-
   /// The width of the indicator. Height is automatically set to 1/4 of this value.
   ///
   /// Defaults to 60.
@@ -49,14 +48,16 @@ class SwappingDotsIndicator extends StatefulWidget {
   State<SwappingDotsIndicator> createState() => _SwappingDotsIndicatorState();
 }
 
-class _SwappingDotsIndicatorState extends State<SwappingDotsIndicator> with SingleTickerProviderStateMixin {
+class _SwappingDotsIndicatorState extends State<SwappingDotsIndicator>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -101,7 +102,11 @@ class _SwappingDotsPainter extends CustomPainter {
   /// Width of the indicator area.
   final double width;
 
-  _SwappingDotsPainter({required this.progress, required this.color, required this.width});
+  _SwappingDotsPainter({
+    required this.progress,
+    required this.color,
+    required this.width,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -133,7 +138,8 @@ class _SwappingDotsPainter extends CustomPainter {
         dx = lerpDouble(start, end, cycleProgress)!;
 
         // Create upward arc using sine wave (0 → peak → 0)
-        final arcHeight = size.height * 1.2; // Arc peak height (120% of indicator height)
+        final arcHeight =
+            size.height * 1.2; // Arc peak height (120% of indicator height)
         dy -= arcHeight * math.sin(cycleProgress * math.pi);
       }
       // Other dots slide linearly to the right

@@ -15,7 +15,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class SquareWaveGridIndicator extends StatefulWidget {
-
   /// The width and height of the indicator (creates a square).
   ///
   /// Defaults to 40.0.
@@ -44,7 +43,8 @@ class SquareWaveGridIndicator extends StatefulWidget {
   });
 
   @override
-  State<SquareWaveGridIndicator> createState() => _SquareWaveGridIndicatorState();
+  State<SquareWaveGridIndicator> createState() =>
+      _SquareWaveGridIndicatorState();
 }
 
 class _SquareWaveGridIndicatorState extends State<SquareWaveGridIndicator>
@@ -63,7 +63,8 @@ class _SquareWaveGridIndicatorState extends State<SquareWaveGridIndicator>
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override

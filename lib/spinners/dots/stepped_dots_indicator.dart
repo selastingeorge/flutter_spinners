@@ -16,7 +16,6 @@ import 'dart:math';
 /// )
 /// ```
 class SteppedDotsLoader extends StatefulWidget {
-
   /// The width of the indicator. Height is automatically set to 1/4 of this value.
   ///
   /// Defaults to 60.
@@ -48,7 +47,8 @@ class SteppedDotsLoader extends StatefulWidget {
   State<SteppedDotsLoader> createState() => _SteppedDotsLoaderState();
 }
 
-class _SteppedDotsLoaderState extends State<SteppedDotsLoader> with SingleTickerProviderStateMixin {
+class _SteppedDotsLoaderState extends State<SteppedDotsLoader>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<int> _steppedAnimation;
 
@@ -56,7 +56,8 @@ class _SteppedDotsLoaderState extends State<SteppedDotsLoader> with SingleTicker
   void initState() {
     super.initState();
     // Initialize repeating animation
-    _controller = AnimationController(vsync: this, duration: widget.duration)..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
 
     // Create stepped animation that jumps between integer values 0-4
     _steppedAnimation = _controller.drive(StepTween(begin: 0, end: 4));
@@ -77,7 +78,10 @@ class _SteppedDotsLoaderState extends State<SteppedDotsLoader> with SingleTicker
         animation: _steppedAnimation,
         builder: (context, child) {
           return CustomPaint(
-            painter: _SteppedDotsPainter(step: _steppedAnimation.value, color: widget.color),
+            painter: _SteppedDotsPainter(
+              step: _steppedAnimation.value,
+              color: widget.color,
+            ),
           );
         },
       ),
@@ -108,7 +112,9 @@ class _SteppedDotsPainter extends CustomPainter {
     // Setup for three dots
     const dotCount = 3;
     final spacing = size.width / dotCount; // Space allocated per dot
-    final radius = min(spacing, size.height) * 0.35; // Dot radius (35% of smaller dimension)
+    final radius =
+        min(spacing, size.height) *
+        0.35; // Dot radius (35% of smaller dimension)
     final dy = size.height * 0.5; // Vertical center
 
     // Convert step (0-4) to progress (0.0-1.0)

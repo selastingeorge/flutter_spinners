@@ -6,5 +6,9 @@ class SpinnerItem {
   final SpinnerCategory category;
   final Widget spinner;
 
-  SpinnerItem({required this.title, required this.category, required this.spinner});
+  SpinnerItem({
+    required this.title,
+    required this.category,
+    required this.spinner,
+  });
 }

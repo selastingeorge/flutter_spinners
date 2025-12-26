@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class WavyDotsIndicator extends StatefulWidget {
-
   /// The width of the indicator. Height is automatically set to 1/4 of this value.
   ///
   /// Defaults to 60.
@@ -64,10 +63,7 @@ class _WavyDotsIndicatorState extends State<WavyDotsIndicator>
   void initState() {
     super.initState();
 
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    );
+    _controller = AnimationController(vsync: this, duration: widget.duration);
 
     // Add listener to pause between cycles
     _controller.addStatusListener((status) async {
@@ -162,9 +158,9 @@ class _WavyDotsPainter extends CustomPainter {
       }
 
       // Get keyframe boundaries and values
-      final t0 = keyframes[k];     // Current keyframe time
+      final t0 = keyframes[k]; // Current keyframe time
       final t1 = keyframes[k + 1]; // Next keyframe time
-      final y0 = yKeyframes[i][k];     // Current keyframe y position
+      final y0 = yKeyframes[i][k]; // Current keyframe y position
       final y1 = yKeyframes[i][k + 1]; // Next keyframe y position
 
       // Calculate interpolation progress within this keyframe segment

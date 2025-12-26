@@ -15,7 +15,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class ShadowDotsIndicator extends StatefulWidget {
-
   /// The width of the indicator. Height is automatically set to 1/4 of this value.
   ///
   /// Defaults to 60.
@@ -55,10 +54,8 @@ class _ShadowDotsIndicatorState extends State<ShadowDotsIndicator>
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    )..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -100,10 +97,7 @@ class _ShadowDotsPainter extends CustomPainter {
   /// Base color of the dots.
   final Color color;
 
-  _ShadowDotsPainter({
-    required this.progress,
-    required this.color,
-  });
+  _ShadowDotsPainter({required this.progress, required this.color});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -119,8 +113,8 @@ class _ShadowDotsPainter extends CustomPainter {
 
     // Alpha levels for different distances from highlight
     const int full = 0xFF; // Full opacity (255) - at highlight
-    const int mid  = 0x66; // Medium opacity (102) - near highlight
-    const int low  = 0x22; // Low opacity (34) - far from highlight
+    const int mid = 0x66; // Medium opacity (102) - near highlight
+    const int low = 0x22; // Low opacity (34) - far from highlight
 
     /// Calculates alpha value based on distance from highlight position.
     ///
@@ -144,11 +138,7 @@ class _ShadowDotsPainter extends CustomPainter {
       paint.color = color.withAlpha(alphaForDot(i));
 
       final dx = spacing * i + spacing / 2;
-      canvas.drawCircle(
-        Offset(dx, cy),
-        radius,
-        paint,
-      );
+      canvas.drawCircle(Offset(dx, cy), radius, paint);
     }
   }
 

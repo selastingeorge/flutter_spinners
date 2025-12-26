@@ -4,7 +4,12 @@ class SpinnerGridItem extends StatefulWidget {
   final String title;
   final String category;
   final Widget spinner;
-  const SpinnerGridItem({super.key, required this.title, required this.spinner, required this.category});
+  const SpinnerGridItem({
+    super.key,
+    required this.title,
+    required this.spinner,
+    required this.category,
+  });
 
   @override
   State<SpinnerGridItem> createState() => _SpinnerGridItemState();

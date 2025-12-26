@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class QuadDotSwapIndicator extends StatefulWidget {
-
   /// The width and height of the indicator (creates a square).
   ///
   /// Defaults to 60.
@@ -56,10 +55,8 @@ class _QuadDotSwapIndicatorState extends State<QuadDotSwapIndicator>
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    )..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -116,7 +113,8 @@ class _QuadDotSwapPainter extends CustomPainter {
 
     // Calculate base square dimensions (60% of indicator size)
     final baseSquareSize = size * 0.6;
-    final dotRadius = baseSquareSize * 0.145; // Dot radius (14.5% of base square)
+    final dotRadius =
+        baseSquareSize * 0.145; // Dot radius (14.5% of base square)
 
     // Adjust square size to account for dot radius
     final squareSize = baseSquareSize - dotRadius * 2;
@@ -129,10 +127,10 @@ class _QuadDotSwapPainter extends CustomPainter {
 
     // Define the four corner positions (clockwise from top-left)
     List<Offset> corners = [
-      offset + Offset(0, 0),                    // Top-left
-      offset + Offset(squareSize, 0),           // Top-right
-      offset + Offset(squareSize, squareSize),  // Bottom-right
-      offset + Offset(0, squareSize),           // Bottom-left
+      offset + Offset(0, 0), // Top-left
+      offset + Offset(squareSize, 0), // Top-right
+      offset + Offset(squareSize, squareSize), // Bottom-right
+      offset + Offset(0, squareSize), // Bottom-left
     ];
 
     // Calculate center point of the square

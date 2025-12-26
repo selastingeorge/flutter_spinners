@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.0.0
+## v0.0.1
 
 Initial release of **flutter_spinners**.
 
@@ -43,3 +43,10 @@ Initial release of **flutter_spinners**.
 ### API
 - Common parameters: `color`, `size`, `duration`
 - Optional `borderRadius` for bar-based spinners
+
+## v0.0.2
+
+Minor Refactoring of codebase
+
+- Formatted source code top pass static analysis.
+- Added screenshots

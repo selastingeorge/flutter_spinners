@@ -17,7 +17,6 @@ import 'dart:math' as math;
 /// )
 /// ```
 class FoldingSquareIndicator extends StatefulWidget {
-
   /// The width and height of the entire indicator (creates a square container).
   ///
   /// Defaults to 40.0.
@@ -57,10 +56,8 @@ class _FoldingSquareIndicatorState extends State<FoldingSquareIndicator>
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    )..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -109,10 +106,7 @@ class _FoldingSquarePainter extends CustomPainter {
   /// Overdraw amount to prevent gaps during rotation.
   static const double _overdraw = 0.6;
 
-  _FoldingSquarePainter({
-    required this.progress,
-    required this.color,
-  });
+  _FoldingSquarePainter({required this.progress, required this.color});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -128,10 +122,34 @@ class _FoldingSquarePainter extends CustomPainter {
     canvas.translate(-size.width / 2, -size.height / 2);
 
     // Draw four squares with different rotations and timing delays
-    _drawCube(canvas, Offset(offset, offset), cubeSize, 0.0, 0.0);                    // Top square, no rotation, no delay
-    _drawCube(canvas, Offset(offset + cubeSize, offset), cubeSize, math.pi / 2, 0.3); // Right square, 90° rotation, 0.3s delay
-    _drawCube(canvas, Offset(offset, offset + cubeSize), cubeSize, 3 * math.pi / 2, 0.9); // Left square, 270° rotation, 0.9s delay
-    _drawCube(canvas, Offset(offset + cubeSize, offset + cubeSize), cubeSize, math.pi, 0.6); // Bottom square, 180° rotation, 0.6s delay
+    _drawCube(
+      canvas,
+      Offset(offset, offset),
+      cubeSize,
+      0.0,
+      0.0,
+    ); // Top square, no rotation, no delay
+    _drawCube(
+      canvas,
+      Offset(offset + cubeSize, offset),
+      cubeSize,
+      math.pi / 2,
+      0.3,
+    ); // Right square, 90° rotation, 0.3s delay
+    _drawCube(
+      canvas,
+      Offset(offset, offset + cubeSize),
+      cubeSize,
+      3 * math.pi / 2,
+      0.9,
+    ); // Left square, 270° rotation, 0.9s delay
+    _drawCube(
+      canvas,
+      Offset(offset + cubeSize, offset + cubeSize),
+      cubeSize,
+      math.pi,
+      0.6,
+    ); // Bottom square, 180° rotation, 0.6s delay
 
     canvas.restore();
   }
@@ -144,12 +162,12 @@ class _FoldingSquarePainter extends CustomPainter {
   /// [rotation] - Static Z-axis rotation for positioning
   /// [delay] - Animation delay in seconds
   void _drawCube(
-      Canvas canvas,
-      Offset position,
-      double size,
-      double rotation,
-      double delay,
-      ) {
+    Canvas canvas,
+    Offset position,
+    double size,
+    double rotation,
+    double delay,
+  ) {
     canvas.save();
 
     // Apply rotation around square's center

@@ -16,7 +16,6 @@ import 'dart:math' as math;
 /// )
 /// ```
 class DoubleRowBarsIndicator extends StatefulWidget {
-
   /// The width of the indicator. Height is automatically set to 80% of this value.
   ///
   /// Defaults to 60.
@@ -52,22 +51,19 @@ class DoubleRowBarsIndicator extends StatefulWidget {
   });
 
   @override
-  State<DoubleRowBarsIndicator> createState() =>
-      _DoubleRowBarsIndicatorState();
+  State<DoubleRowBarsIndicator> createState() => _DoubleRowBarsIndicatorState();
 }
 
-class _DoubleRowBarsIndicatorState
-    extends State<DoubleRowBarsIndicator> with SingleTickerProviderStateMixin {
+class _DoubleRowBarsIndicatorState extends State<DoubleRowBarsIndicator>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration,
-    )..repeat();
+    _controller = AnimationController(vsync: this, duration: widget.duration)
+      ..repeat();
   }
 
   @override
@@ -182,5 +178,7 @@ class _DoubleRowBarsPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _DoubleRowBarsPainter oldDelegate) =>
-      oldDelegate.t != t || oldDelegate.color != color || oldDelegate.borderRadius != borderRadius;
+      oldDelegate.t != t ||
+      oldDelegate.color != color ||
+      oldDelegate.borderRadius != borderRadius;
 }

@@ -17,7 +17,6 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 class FlippingSquaresGridIndicator extends StatefulWidget {
-
   /// The width and height of the entire grid (creates a square container).
   ///
   /// Defaults to 36.
@@ -50,7 +49,8 @@ class FlippingSquaresGridIndicator extends StatefulWidget {
       _FlippingSquaresGridIndicatorState();
 }
 
-class _FlippingSquaresGridIndicatorState extends State<FlippingSquaresGridIndicator>
+class _FlippingSquaresGridIndicatorState
+    extends State<FlippingSquaresGridIndicator>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
@@ -58,8 +58,7 @@ class _FlippingSquaresGridIndicatorState extends State<FlippingSquaresGridIndica
   void initState() {
     super.initState();
     // Initialize and start the repeating animation
-    _controller =
-    AnimationController(vsync: this, duration: widget.duration)
+    _controller = AnimationController(vsync: this, duration: widget.duration)
       ..repeat();
   }
 
@@ -154,7 +153,7 @@ class _FlippingSquaresGridPainter extends CustomPainter {
 
       // Calculate grid position (row and column)
       final row = i ~/ 2; // Integer division: 0-1 → row 0, 2-3 → row 1
-      final col = i % 2;  // Modulo: 0,2 → col 0, 1,3 → col 1
+      final col = i % 2; // Modulo: 0,2 → col 0, 1,3 → col 1
 
       // Calculate center position of this square
       final cx = col * cell + cell / 2;
@@ -180,11 +179,7 @@ class _FlippingSquaresGridPainter extends CustomPainter {
 
       // Draw square centered at origin (after translation)
       canvas.drawRect(
-        Rect.fromCenter(
-          center: Offset.zero,
-          width: cell,
-          height: cell,
-        ),
+        Rect.fromCenter(center: Offset.zero, width: cell, height: cell),
         paint,
       );
 
