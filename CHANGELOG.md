@@ -56,3 +56,9 @@ Minor Refactoring of codebase
 Updated README
 
 - Fixed missing screenshot fom readme
+
+## v0.0.4
+
+Updated Screenshot
+
+- Fixed screenshot not rendering in readme
