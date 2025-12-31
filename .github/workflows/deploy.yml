@@ -26,9 +26,11 @@ jobs:
           cache: true
       
       - name: Install deps
+        working-directory: example
         run: flutter pub get
       
       - name: Build web
+        working-directory: example
         run: |
           # Project Pages are served from /<repo>/, user/org pages from /
           REPO_NAME="${GITHUB_REPOSITORY#*/}"
@@ -45,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: build/web
+          path: example/build/web
 
   deploy:
     runs-on: ubuntu-latest
