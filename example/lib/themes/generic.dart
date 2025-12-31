@@ -4,7 +4,7 @@ ThemeData genericTheme = ThemeData(
   fontFamily: "Inter",
   colorScheme: ColorScheme.dark(),
   brightness: Brightness.dark,
-  scaffoldBackgroundColor: Color(0x86171717),
+  scaffoldBackgroundColor: Color(0xFF0c0c0c),
 
   cardTheme: CardThemeData(
     color: Colors.white.withAlpha(5),

@@ -62,3 +62,10 @@ Updated README
 Updated Screenshot
 
 - Fixed screenshot not rendering in readme
+
+## v0.0.5
+
+Updated Demo
+
+- Fixed issue with wrong background color in web version
+- Added max-width constrains in demo to avoid stretching of layout
